@@ -3,131 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Honda Việt Nam - Ô tô chính hãng</title>
+    <title>Honda Việt Nam - Trang chủ</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thêm Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'honda-red': '#e60012',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        .swiper {
+            width: 100%;
+            height: 500px;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff !important;
+        }
+        .swiper-pagination-bullet-active {
+            background: #fff !important;
+        }
+    </style>
 </head>
 <body class="font-sans m-0 p-0">
-    <header class="bg-[#e60012] text-white p-5 text-center">
-        <h1>Thành Trung Honda</h1>
-        <p>Chất lượng từ Nhật Bản</p>
+    <header class="bg-honda-red text-white p-5 text-center">
+        <h2 class="text-4xl font-bold tracking-wider uppercase mb-2">Thành Trung Honda</h2>
+        <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
     </header>
 
-    <nav class="bg-gray-800 p-4">
-        <a href="#trangchu" class="text-white no-underline mx-4">Trang chủ</a>
-        <a href="#sanpham" class="text-white no-underline mx-4">Sản phẩm</a>
-        <a href="#dichvu" class="text-white no-underline mx-4">Dịch vụ</a>
-        <a href="#lienhe" class="text-white no-underline mx-4">Liên hệ</a>
+    <nav class="bg-gray-800 p-4 text-center">
+        <a href="index.html" class="text-white no-underline mx-4 hover:text-gray-300">Trang chủ</a>
+        <a href="sanpham.html" class="text-white no-underline mx-4 hover:text-gray-300">Sản phẩm</a>
+        <a href="dichvu.html" class="text-white no-underline mx-4 hover:text-gray-300">Dịch vụ</a>
+        <a href="lienhe.html" class="text-white no-underline mx-4 hover:text-gray-300">Liên hệ</a>
     </nav>
 
-    <div class="max-w-7xl mx-auto p-5">
-        <h2>Các dòng xe nổi bật</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="/img//honda-city.webp" alt="Honda City" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda City</h3>
-                <p class="text-gray-600 my-2">Sedan hạng B sang trọng và tiết kiệm</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 529.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
+    <!-- Thêm phần này sau thẻ nav và trước main trong cả hai file -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-5">
+            <form class="flex flex-col md:flex-row gap-4" action="sanpham.html" method="GET">
+                <!-- Tìm theo tên xe -->
+                <div class="flex-1">
+                    <input type="text" 
+                           placeholder="Nhập tên xe bạn cần tìm..." 
+                           class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-honda-red focus:ring-1 focus:ring-honda-red outline-none"
+                           name="search">
+                </div>
 
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/civic.png" alt="Honda Civic" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda Civic</h3>
-                <p class="text-gray-600 my-2">Sedan thể thao đẳng cấp</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 730.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
+                <!-- Chọn dòng xe -->
+                <div class="md:w-48">
+                    <select class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-honda-red focus:ring-1 focus:ring-honda-red outline-none"
+                            name="category">
+                        <option value="">Tất cả dòng xe</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="7cho">7 chỗ</option>
+                        <option value="thethao">Thể thao</option>
+                    </select>
+                </div>
 
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/crv.png" alt="Honda CR-V" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda CR-V</h3>
-                <p class="text-gray-600 my-2">SUV đa dụng cao cấp</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 998.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
+                <!-- Chọn khoảng giá -->
+                <div class="md:w-48">
+                    <select class="w-full px-4 py-2 rounded-md border border-gray-300 focus:border-honda-red focus:ring-1 focus:ring-honda-red outline-none"
+                            name="price">
+                        <option value="">Mọi mức giá</option>
+                        <option value="500-700">500 - 700 triệu</option>
+                        <option value="700-900">700 - 900 triệu</option>
+                        <option value="900-1200">900 triệu - 1.2 tỷ</option>
+                        <option value="1200+">Trên 1.2 tỷ</option>
+                    </select>
+                </div>
 
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/accord.png" alt="Honda Accord" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda Accord</h3>
-                <p class="text-gray-600 my-2">Sedan hạng D sang trọng</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 1.319.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/hrv.png" alt="Honda HR-V" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda HR-V</h3>
-                <p class="text-gray-600 my-2">SUV đô thị năng động</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 699.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/brv.png" alt="Honda BR-V" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda BR-V</h3>
-                <p class="text-gray-600 my-2">SUV 7 chỗ đa dụng</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 661.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/odyssey.png" alt="Honda Odyssey" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda Odyssey</h3>
-                <p class="text-gray-600 my-2">MPV cao cấp đẳng cấp</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 1.999.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/city-hatchback.png" alt="Honda City Hatchback" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda City Hatchback</h3>
-                <p class="text-gray-600 my-2">Hatchback thể thao đô thị</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 599.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/civic-type-r.png" alt="Honda Civic Type R" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda Civic Type R</h3>
-                <p class="text-gray-600 my-2">Xe thể thao hiệu suất cao</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 2.399.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
-
-            <div class="border border-gray-200 p-4 text-center">
-                <img src="https://honda.com.vn/wp-content/uploads/2023/12/crv-hybrid.png" alt="Honda CR-V Hybrid" class="w-full h-auto">
-                <h3 class="text-xl font-semibold mt-3">Honda CR-V Hybrid</h3>
-                <p class="text-gray-600 my-2">SUV hybrid tiết kiệm nhiên liệu</p>
-                <p class="text-red-600 font-bold mb-4">Giá từ: 1.098.000.000 VNĐ</p>
-                <a href="#" class="inline-block bg-[#e60012] text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors">
-                    Xem chi tiết
-                </a>
-            </div>
+                <!-- Nút tìm kiếm -->
+                <button type="submit" 
+                        class="bg-honda-red text-white px-8 py-2 rounded-md hover:bg-red-700 transition-colors flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    Tìm kiếm
+                </button>
+            </form>
         </div>
     </div>
 
+    <main class="max-w-7xl mx-auto p-5">
+        <!-- Hero Slider -->
+        <div class="swiper heroSwiper mb-12">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/slider/slide1.jpg" alt="Honda Civic">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h2 class="text-4xl font-bold mb-4">Honda Civic</h2>
+                            <p class="text-xl mb-6">Đẳng cấp sedan thể thao</p>
+                            <a href="sanpham.html#sedan" class="bg-honda-red text-white px-8 py-3 rounded-md hover:bg-red-700">
+                                Khám phá ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/slider/slide2.jpg" alt="Honda CR-V">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h2 class="text-4xl font-bold mb-4">Honda CR-V</h2>
+                            <p class="text-xl mb-6">SUV đa dụng hoàn hảo</p>
+                            <a href="sanpham.html#suv" class="bg-honda-red text-white px-8 py-3 rounded-md hover:bg-red-700">
+                                Khám phá ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/slider/slide3.jpg" alt="Honda City">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <h2 class="text-4xl font-bold mb-4">Honda City</h2>
+                            <p class="text-xl mb-6">Sedan đô thị thông minh</p>
+                            <a href="sanpham.html#sedan" class="bg-honda-red text-white px-8 py-3 rounded-md hover:bg-red-700">
+                                Khám phá ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Danh mục sản phẩm -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Danh mục sản phẩm</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Sedan -->
+                <a href="/sanpham.html#sedan" class="group">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="/images/categories/sedan.jpg" alt="Sedan" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">Sedan</h3>
+                            <p class="text-gray-600">Civic, City, Accord</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- SUV -->
+                <a href="/sanpham.html#suv" class="group">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="/images/categories/suv.jpg" alt="SUV" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">SUV</h3>
+                            <p class="text-gray-600">CR-V, HR-V</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 7 chỗ -->
+                <a href="/sanpham.html#7cho" class="group">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="/images/categories/7cho.jpg" alt="7 chỗ" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">7 chỗ</h3>
+                            <p class="text-gray-600">BR-V</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Thể thao -->
+                <a href="/sanpham.html#thethao" class="group">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <img src="/images/categories/thethao.jpg" alt="Thể thao" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">Thể thao</h3>
+                            <p class="text-gray-600">Civic Type R</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
     <footer class="bg-gray-800 text-white text-center p-5 mt-8">
-        <p>© 2024 Thành Trung Honda . Tất cả quyền được bảo lưu.</p>
-        <p>Địa chỉ: Phường 6 Nguyễn chí Khanh, Thành Phố Trà Vinh , Trà Vinh</p>
-        <p>Hotline:0392647923</p>
+        <p>© 2024 Thành Trung Honda. Tất cả quyền được bảo lưu.</p>
+        <p>Địa chỉ: Phường 6 Nguyễn Chí Khanh, Thành Phố Trà Vinh, Trà Vinh</p>
+        <p>Hotline: 0392647923</p>
     </footer>
+
+    <!-- Thêm Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".heroSwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+    <script>
+        // Hàm xử lý tìm kiếm
+        function handleSearch(event) {
+            event.preventDefault();
+            
+            const searchTerm = document.querySelector('input[name="search"]').value.toLowerCase();
+            const category = document.querySelector('select[name="category"]').value;
+            const price = document.querySelector('select[name="price"]').value;
+            
+            // Lấy tất cả các card sản phẩm
+            const products = document.querySelectorAll('.product-card');
+            
+            products.forEach(product => {
+                let shouldShow = true;
+                
+                // Kiểm tra tên xe
+                if (searchTerm) {
+                    const productName = product.querySelector('h3').textContent.toLowerCase();
+                    if (!productName.includes(searchTerm)) {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Kiểm tra danh mục
+                if (category && !product.classList.contains(category)) {
+                    shouldShow = false;
+                }
+                
+                // Kiểm tra giá (cần thêm logic xử lý giá)
+                if (price) {
+                    const productPrice = parseInt(product.dataset.price);
+                    const [min, max] = price.split('-').map(Number);
+                    if (productPrice < min || productPrice > max) {
+                        shouldShow = false;
+                    }
+                }
+                
+                // Hiển thị hoặc ẩn sản phẩm
+                product.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+
+        // Gắn sự kiện submit cho form tìm kiếm
+        document.querySelector('form').addEventListener('submit', handleSearch);
+    </script>
 </body>
 </html>

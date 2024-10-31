@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-link {
+    @apply text-white no-underline mx-4 hover:text-gray-300 transition-colors;
+  }
+  
+  .btn-primary {
+    @apply bg-honda-red text-white px-6 py-2 rounded-md hover:bg-red-700 transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border border-honda-red text-honda-red px-6 py-2 rounded-md hover:bg-red-50 transition-colors;
+  }
+  
+  .section-title {
+    @apply text-2xl font-bold mb-6;
+  }
+  
+  .card {
+    @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow;
+  }
+}

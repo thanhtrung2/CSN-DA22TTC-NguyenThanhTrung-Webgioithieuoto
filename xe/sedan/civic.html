@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Civic - Chi tiết sản phẩm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'honda-red': '#e60012',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans m-0 p-0">
+    <!-- Header & Nav giống index.html -->
+
+    <main class="max-w-7xl mx-auto p-5">
+        <!-- Breadcrumb -->
+        <div class="text-sm breadcrumbs mb-6">
+            <a href="/sanpham.html" class="text-gray-600 hover:text-honda-red">Sản phẩm</a>
+            <span class="mx-2">›</span>
+            <a href="/sanpham.html#sedan" class="text-gray-600 hover:text-honda-red">Sedan</a>
+            <span class="mx-2">›</span>
+            <span class="text-honda-red">Honda Civic</span>
+        </div>
+
+        <!-- Product Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <!-- Image Gallery -->
+            <div class="space-y-4">
+                <img src="/images/civic/main.jpg" alt="Honda Civic" class="w-full rounded-lg">
+                <div class="grid grid-cols-4 gap-2">
+                    <img src="/images/civic/1.jpg" alt="" class="w-full rounded cursor-pointer">
+                    <img src="/images/civic/2.jpg" alt="" class="w-full rounded cursor-pointer">
+                    <img src="/images/civic/3.jpg" alt="" class="w-full rounded cursor-pointer">
+                    <img src="/images/civic/4.jpg" alt="" class="w-full rounded cursor-pointer">
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="space-y-6">
+                <h1 class="text-3xl font-bold">Honda Civic</h1>
+                <p class="text-2xl text-honda-red font-semibold">Từ 730.000.000 VNĐ</p>
+                
+                <!-- Colors -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Màu sắc</h3>
+                    <div class="flex space-x-2">
+                        <button class="w-8 h-8 rounded-full bg-red-600"></button>
+                        <button class="w-8 h-8 rounded-full bg-blue-600"></button>
+                        <button class="w-8 h-8 rounded-full bg-white border"></button>
+                        <button class="w-8 h-8 rounded-full bg-black"></button>
+                    </div>
+                </div>
+
+                <!-- Versions -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Phiên bản</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between p-3 border rounded">
+                            <span>Civic E</span>
+                            <span>730.000.000 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between p-3 border rounded">
+                            <span>Civic G</span>
+                            <span>770.000.000 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between p-3 border rounded">
+                            <span>Civic RS</span>
+                            <span>870.000.000 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="space-x-4">
+                    <button class="bg-honda-red text-white px-8 py-3 rounded-md hover:bg-red-700">
+                        Đăng ký lái thử
+                    </button>
+                    <button class="border border-honda-red text-honda-red px-8 py-3 rounded-md hover:bg-red-50">
+                        Báo giá xe
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Thông số kỹ thuật</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="flex justify-between p-3 bg-gray-50">
+                        <span class="font-medium">Kích thước tổng thể</span>
+                        <span>4.678 x 1.802 x 1.415 mm</span>
+                    </div>
+                    <div class="flex justify-between p-3">
+                        <span class="font-medium">Chiều dài cơ sở</span>
+                        <span>2.735 mm</span>
+                    </div>
+                    <div class="flex justify-between p-3 bg-gray-50">
+                        <span class="font-medium">Động cơ</span>
+                        <span>1.5L VTEC TURBO</span>
+                    </div>
+                    <div class="flex justify-between p-3">
+                        <span class="font-medium">Công suất cực đại</span>
+                        <span>176 mã lực</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex justify-between p-3 bg-gray-50">
+                        <span class="font-medium">Hộp số</span>
+                        <span>CVT</span>
+                    </div>
+                    <div class="flex justify-between p-3">
+                        <span class="font-medium">Dung tích nhiên liệu</span>
+                        <span>47L</span>
+                    </div>
+                    <div class="flex justify-between p-3 bg-gray-50">
+                        <span class="font-medium">Mức tiêu thụ nhiên liệu</span>
+                        <span>6.5L/100km</span>
+                    </div>
+                    <div class="flex justify-between p-3">
+                        <span class="font-medium">Số chỗ ngồi</span>
+                        <span>5 chỗ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">Tính năng nổi bật</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-4 border rounded-lg">
+                    <img src="/images/civic/features/1.jpg" alt="" class="w-full mb-4 rounded">
+                    <h3 class="font-semibold mb-2">Honda SENSING</h3>
+                    <p class="text-gray-600">Gói công nghệ hỗ trợ lái xe an toàn tiên tiến</p>
+                </div>
+                <div class="p-4 border rounded-lg">
+                    <img src="/images/civic/features/2.jpg" alt="" class="w-full mb-4 rounded">
+                    <h3 class="font-semibold mb-2">Động cơ VTEC TURBO</h3>
+                    <p class="text-gray-600">Mạnh mẽ và tiết kiệm nhiên liệu</p>
+                </div>
+                <div class="p-4 border rounded-lg">
+                    <img src="/images/civic/features/3.jpg" alt="" class="w-full mb-4 rounded">
+                    <h3 class="font-semibold mb-2">Màn hình cảm ứng 9 inch</h3>
+                    <p class="text-gray-600">Tích hợp Apple CarPlay và Android Auto</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer giống index.html -->
+</body>
+</html>
