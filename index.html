@@ -224,48 +224,64 @@
     </script>
     <script>
         // Hàm xử lý tìm kiếm
-        function handleSearch(event) {
+        async function handleSearch(event) {
             event.preventDefault();
             
-            const searchTerm = document.querySelector('input[name="search"]').value.toLowerCase();
+            const searchTerm = document.querySelector('input[name="search"]').value;
             const category = document.querySelector('select[name="category"]').value;
             const price = document.querySelector('select[name="price"]').value;
-            
-            // Lấy tất cả các card sản phẩm
-            const products = document.querySelectorAll('.product-card');
-            
-            products.forEach(product => {
-                let shouldShow = true;
-                
-                // Kiểm tra tên xe
-                if (searchTerm) {
-                    const productName = product.querySelector('h3').textContent.toLowerCase();
-                    if (!productName.includes(searchTerm)) {
-                        shouldShow = false;
-                    }
-                }
-                
-                // Kiểm tra danh mục
-                if (category && !product.classList.contains(category)) {
-                    shouldShow = false;
-                }
-                
-                // Kiểm tra giá (cần thêm logic xử lý giá)
-                if (price) {
-                    const productPrice = parseInt(product.dataset.price);
-                    const [min, max] = price.split('-').map(Number);
-                    if (productPrice < min || productPrice > max) {
-                        shouldShow = false;
-                    }
-                }
-                
-                // Hiển thị hoặc ẩn sản phẩm
-                product.style.display = shouldShow ? 'block' : 'none';
-            });
+
+            // Tạo URL với các tham số tìm kiếm
+            let url = 'http://localhost:3000/api/cars/search?';
+            const params = new URLSearchParams();
+
+            if (searchTerm) {
+                params.append('name', searchTerm);
+            }
+            if (category) {
+                params.append('category', category);
+            }
+            if (price) {
+                const [min, max] = price.split('-');
+                if (min) params.append('minPrice', min * 1000000);
+                if (max && max !== '+') params.append('maxPrice', max * 1000000);
+            }
+
+            try {
+                // Chuyển hướng đến trang sản phẩm với các tham số tìm kiếm
+                window.location.href = `sanpham.html?${params.toString()}`;
+            } catch (error) {
+                console.error('Lỗi khi tìm kiếm:', error);
+                alert('Có lỗi xảy ra khi tìm kiếm. Vui lòng thử lại sau.');
+            }
         }
 
         // Gắn sự kiện submit cho form tìm kiếm
         document.querySelector('form').addEventListener('submit', handleSearch);
+
+        // Hàm format giá tiền
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+
+        // Kiểm tra và điền giá trị tìm kiếm từ URL (nếu có)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Điền các giá trị tìm kiếm vào form
+            if (urlParams.has('search')) {
+                document.querySelector('input[name="search"]').value = urlParams.get('search');
+            }
+            if (urlParams.has('category')) {
+                document.querySelector('select[name="category"]').value = urlParams.get('category');
+            }
+            if (urlParams.has('price')) {
+                document.querySelector('select[name="price"]').value = urlParams.get('price');
+            }
+        });
     </script>
 </body>
 </html>

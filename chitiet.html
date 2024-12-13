@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm - Honda Việt Nam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'honda-red': '#e60012',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans m-0 p-0">
+    <header class="bg-honda-red text-white p-5 text-center">
+        <h2 class="text-4xl font-bold tracking-wider uppercase mb-2">Thành Trung Honda</h2>
+        <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
+    </header>
+
+    <nav class="bg-gray-800 p-4 text-center">
+        <a href="index.html" class="text-white no-underline mx-4 hover:text-gray-300">Trang chủ</a>
+        <a href="sanpham.html" class="text-white no-underline mx-4 hover:text-gray-300">Sản phẩm</a>
+        <a href="dichvu.html" class="text-white no-underline mx-4 hover:text-gray-300">Dịch vụ</a>
+        <a href="lienhe.html" class="text-white no-underline mx-4 hover:text-gray-300">Liên hệ</a>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-5">
+        <div id="product-detail" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Chi tiết sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-5 mt-8">
+        <p>© 2024 Thành Trung Honda. Tất cả quyền được bảo lưu.</p>
+        <p>Địa chỉ: Phường 6 Nguyễn Chí Khanh, Thành Phố Trà Vinh, Trà Vinh</p>
+        <p>Hotline: 0392647923</p>
+    </footer>
+
+    <script>
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+
+        async function getProductDetail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            if (!productId) {
+                window.location.href = 'sanpham.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/cars`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const cars = await response.json();
+                const product = cars.find(car => car.id === productId);
+
+                if (!product) {
+                    document.getElementById('product-detail').innerHTML = `
+                        <div class="col-span-2 text-center text-red-600">
+                            Không tìm thấy sản phẩm
+                        </div>
+                    `;
+                    return;
+                }
+
+                document.title = `${product.name} - Honda Việt Nam`;
+                
+                document.getElementById('product-detail').innerHTML = `
+                    <div class="space-y-4">
+                        <img src="${product.image}" alt="${product.name}" 
+                             class="w-full rounded-lg shadow-lg">
+                        
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 class="w-full rounded-lg shadow cursor-pointer hover:opacity-90">
+                            <img src="${product.image}" alt="${product.name}" 
+                                 class="w-full rounded-lg shadow cursor-pointer hover:opacity-90">
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800">${product.name}</h1>
+                            <p class="text-gray-600 mt-2">${product.description}</p>
+                        </div>
+
+                        <div class="text-2xl font-bold text-honda-red">
+                            ${formatPrice(product.price)}
+                        </div>
+
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <h2 class="text-xl font-semibold mb-4">Thông số kỹ thuật</h2>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Động cơ:</span>
+                                    <span class="font-medium">${product.specs.engine}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Công suất:</span>
+                                    <span class="font-medium">${product.specs.power}</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Hộp số:</span>
+                                    <span class="font-medium">${product.specs.transmission}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <button class="w-full bg-honda-red text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
+                                Đặt lịch lái thử
+                            </button>
+                            <button class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
+                                Liên hệ tư vấn
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu:', error);
+                document.getElementById('product-detail').innerHTML = `
+                    <div class="col-span-2 text-center text-red-600">
+                        Không thể tải thông tin sản phẩm. Vui lòng thử lại sau.
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', getProductDetail);
+    </script>
+</body>
+</html> 
