@@ -7,7 +7,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng B thể thao, tiết kiệm nhiên liệu",
       "price": 599000000,
-      "image": "/img/city-rs.jpg",
+      "image": "/img/honda-city.webp",
       "specs": {
         "engine": "1.5L DOHC i-VTEC",
         "power": "119 mã lực",
@@ -21,7 +21,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng B tiêu chuẩn",
       "price": 529000000,
-      "image": "/img/city.jpg",
+      "image": "/img/honda-city-G.webp",
       "specs": {
         "engine": "1.5L DOHC i-VTEC",
         "power": "119 mã lực",
@@ -35,7 +35,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng C thể thao đẳng cấp",
       "price": 870000000,
-      "image": "/img/civic-rs.jpg",
+      "image": "/img/Honda civic-RS.jpg",
       "specs": {
         "engine": "1.5L VTEC TURBO",
         "power": "176 mã lực",
@@ -49,7 +49,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng C tiêu chuẩn",
       "price": 730000000,
-      "image": "/img/civic.jpg",
+      "image": "/img/honda-city-G.webp",
       "specs": {
         "engine": "1.5L VTEC TURBO",
         "power": "176 mã lực",
@@ -63,7 +63,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng D sang trọng và đẳng cấp",
       "price": 1319000000,
-      "image": "/img/accord.jpg",
+      "image": "/img/honda-accord.jpg",
       "specs": {
         "engine": "1.5L VTEC TURBO",
         "power": "188 mã lực",
@@ -77,7 +77,7 @@
       "categoryName": "SUV",
       "description": "SUV cao cấp nhất, 7 chỗ",
       "price": 1118000000,
-      "image": "/img/crv-l.jpg",
+      "image": "/img/Honda_CR-v7cho.jpg",
       "specs": {
         "engine": "1.5L VTEC TURBO",
         "power": "188 mã lực",
@@ -105,7 +105,7 @@
       "categoryName": "SUV",
       "description": "SUV đô thị thể thao",
       "price": 871000000,
-      "image": "/img/hrv-rs.jpg",
+      "image": "/img/honda-hrv.avif",
       "specs": {
         "engine": "1.5L VTEC TURBO",
         "power": "174 mã lực",
@@ -133,7 +133,7 @@
       "categoryName": "7 Chỗ",
       "description": "SUV 7 chỗ cao cấp",
       "price": 705000000,
-      "image": "/img/brv-l.jpg",
+      "image": "/img/Honda_BR-V.jpg",
       "specs": {
         "engine": "1.5L DOHC i-VTEC",
         "power": "119 mã lực",
@@ -161,7 +161,7 @@
       "categoryName": "Thể Thao",
       "description": "Xe thể thao hiệu suất cao",
       "price": 2399000000,
-      "image": "/img/typer.jpg",
+      "image": "/img/Civic-Type-R-lead.avif",
       "specs": {
         "engine": "2.0L VTEC TURBO",
         "power": "315 mã lực",

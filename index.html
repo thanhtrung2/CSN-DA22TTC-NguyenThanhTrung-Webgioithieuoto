@@ -42,13 +42,14 @@
         <h2 class="text-4xl font-bold tracking-wider uppercase mb-2">Thành Trung Honda</h2>
         <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
     </header>
-
-    <nav class="bg-gray-800 p-4 text-center">
-        <a href="index.html" class="text-white no-underline mx-4 hover:text-gray-300">Trang chủ</a>
-        <a href="sanpham.html" class="text-white no-underline mx-4 hover:text-gray-300">Sản phẩm</a>
-        <a href="dichvu.html" class="text-white no-underline mx-4 hover:text-gray-300">Dịch vụ</a>
-        <a href="lienhe.html" class="text-white no-underline mx-4 hover:text-gray-300">Liên hệ</a>
+    <!-- Navigation -->
+    <nav class="bg-gray-800 p-6 text-center">
+        <a href="index.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Trang chủ</a>
+        <a href="sanpham.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Sản phẩm</a>
+        <a href="dichvu.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Dịch vụ</a>
+        <a href="lienhe.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Liên hệ</a>
     </nav>
+    
 
     <!-- Thêm phần này sau thẻ nav và trước main trong cả hai file -->
     <div class="bg-gray-100 py-4">
@@ -283,5 +284,45 @@
             }
         });
     </script>
+    <!-- Nút đóng quảng cáo -->
+    <button class="absolute top-2 right-2 bg-white/80 p-1 rounded-full hover:bg-white">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+
+    <!-- Quảng cáo 2 bên -->
+    <div class="hidden 2xl:block">
+        <!-- Quảng cáo bên trái -->
+        <div class="fixed left-0 top-1/2 -translate-y-1/2 z-40 w-[160px] transition-transform hover:scale-105 duration-300">
+            <a href="#" class="block shadow-lg">
+                <img src="/img/poster_honda.jpg" 
+                     alt="Khuyến mãi Honda" 
+                     class="w-[160px] h-[600px] object-cover object-center rounded-r-lg">
+                <!-- Badge khuyến mãi -->
+                <div class="absolute top-4 right-0 bg-honda-red text-white px-3 py-1 rounded-l-lg text-sm font-medium">
+                    Khuyến mãi
+                </div>
+            </a>
+        </div>
+        
+        <!-- Quảng cáo bên phải -->
+        <div class="fixed right-0 top-1/2 -translate-y-1/2 z-40 w-[160px] h-[600px] transition-transform hover:scale-105 duration-300">
+            <a href="#" class="block shadow-lg w-[160px] h-[600px]">
+                <img src="/img/trang-chu3.jpg" 
+                     alt="Ưu đãi Honda" 
+                     class="w-[160px] h-[600px] object-cover object-center rounded-l-lg">
+                <!-- Badge ưu đãi -->
+                <div class="absolute top-4 left-0 bg-honda-red text-white px-3 py-1 rounded-r-lg text-sm font-medium">
+                    Ưu đãi
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Container chính -->
+    <div class="max-w-7xl mx-auto 2xl:mx-[180px]">
+        <!-- Nội dung trang -->
+    </div>
 </body>
 </html>
