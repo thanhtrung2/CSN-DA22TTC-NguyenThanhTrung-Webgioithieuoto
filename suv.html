@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xe SUV - Honda Việt Nam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'honda-red': '#e60012',
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans m-0 p-0">
+    <!-- Header -->
+    <header class="bg-honda-red text-white p-5 text-center">
+        <h2 class="text-4xl font-bold tracking-wider uppercase mb-2">Thành Trung Honda</h2>
+        <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-800 p-6 text-center relative">
+        <a href="index.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Trang chủ</a>
+        
+        <!-- Dropdown container -->
+        <div class="relative inline-block group">
+            <a href="sanpham.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">
+                Sản phẩm ▾
+            </a>
+            
+            <!-- Dropdown menu -->
+            <div class="absolute hidden group-hover:block w-48 bg-white rounded-md shadow-lg py-1 z-50
+                        left-1/2 transform -translate-x-1/2 mt-1">
+                <a href="sedan.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">Sedan</a>
+                <a href="suv.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">SUV</a>
+                <a href="7cho.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">7 Chỗ</a>
+                <a href="thethao.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">Thể thao</a>
+            </div>
+        </div>
+        
+        <a href="dichvu.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Dịch vụ</a>
+        <a href="lienhe.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Liên hệ</a>
+    </nav>
+
+<body class="font-sans m-0 p-0">
+    <main class="max-w-7xl mx-auto p-5">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-honda-red">Dòng Xe SUV</h1>
+            <p class="text-gray-600 mt-4">Mạnh mẽ và đa dụng cho mọi địa hình</p>
+        </div>
+
+        <div id="products-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        async function getProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/cars');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const products = await response.json();
+                
+                // Lọc chỉ lấy xe SUV
+                const suvProducts = products.filter(product => product.category === 'suv');
+                
+                displayProducts(suvProducts);
+            } catch (error) {
+                console.error('Lỗi:', error);
+                document.getElementById('products-container').innerHTML = `
+                    <div class="col-span-3 text-center text-red-600">
+                        Không thể tải dữ liệu sản phẩm. Lỗi: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function displayProducts(products) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = products.map(product => `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">${product.name}</h3>
+                        <p class="text-gray-600 mb-4">${product.description}</p>
+                        <div class="text-honda-red font-bold mb-4 text-2xl">
+                            ${new Intl.NumberFormat('vi-VN', {
+                                style: 'currency',
+                                currency: 'VND'
+                            }).format(product.price)}
+                        </div>
+                        <a href="chitiet.html?id=${product.id}" 
+                           class="block bg-honda-red text-white text-center py-2 rounded-lg hover:bg-red-700 transition-colors">
+                            Xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', getProducts);
+    </script>
+</body>
+</html> 

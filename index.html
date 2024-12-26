@@ -43,10 +43,31 @@
         <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
     </header>
     <!-- Navigation -->
-    <nav class="bg-gray-800 p-6 text-center">
+    <nav class="bg-gray-800 p-6 text-center relative">
         <a href="index.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Trang chủ</a>
-        <a href="sanpham.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Sản phẩm</a>
-        <a href="dichvu.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Dịch vụ</a>
+        
+        <!-- Dropdown container -->
+        <div class="relative inline-block group">
+            <a href="sanpham.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">
+                Sản phẩm ▾
+            </a>
+            
+            <!-- Dropdown menu -->
+            <div class="absolute hidden group-hover:block w-48 bg-white rounded-md shadow-lg py-1 z-50
+                        left-1/2 transform -translate-x-1/2 mt-1">
+                <a href="sedan.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">Sedan</a>
+                <a href="suv.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">SUV</a>
+                <a href="7cho.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">7 Chỗ</a>
+                <a href="thethao.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-red-600">Thể thao</a>
+            </div>
+        </div>
+
+        <!-- Dropdown container cho Dịch vụ -->
+            
+       
+            <a href="dichvu.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Dịch vụ</a>
+        </div>
+        
         <a href="lienhe.html" class="text-white no-underline mx-6 text-lg hover:text-gray-300">Liên hệ</a>
     </nav>
     
@@ -145,53 +166,11 @@
             <div class="swiper-pagination"></div>
         </div>
 
-        <!-- Danh mục sản phẩm -->
+        <!-- Thêm section này vào sau phần "Danh mục sản phẩm" trong main -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">Danh mục sản phẩm</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- Sedan -->
-                <a href="/sanpham.html#sedan" class="group">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                        <img src="/img/civic-honda.webp" alt="Sedan" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">Sedan</h3>
-                            <p class="text-gray-600">Civic, City, Accord</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- SUV -->
-                <a href="/sanpham.html#suv" class="group">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                        <img src="/img/Honda-CR-V-Hybrid.avif"SUV" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">SUV</h3>
-                            <p class="text-gray-600">CR-V, HR-V</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- 7 chỗ -->
-                <a href="/sanpham.html#7cho" class="group">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                        <img src="/img/Honda_BR-V.jpg" alt="7 chỗ" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">7 chỗ</h3>
-                            <p class="text-gray-600">BR-V</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Thể thao -->
-                <a href="/sanpham.html#thethao" class="group">
-                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                        <img src="/img/Civic-Type-R-lead.avif" alt="Thể thao" class="w-full h-40 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-xl font-semibold mb-2 group-hover:text-honda-red">Thể thao</h3>
-                            <p class="text-gray-600">Civic Type R</p>
-                        </div>
-                    </div>
-                </a>
+            <h2 class="text-2xl font-semibold mb-6">Sản phẩm nổi bật</h2>
+            <div id="featured-products" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Sản phẩm nổi bật sẽ được thêm vào đây bằng JavaScript -->
             </div>
         </section>
     </main>
@@ -224,65 +203,147 @@
         });
     </script>
     <script>
+        let allProducts = []; // Lưu trữ tất cả sản phẩm
+        let searchTimeout;
+
+        // Hàm lấy tất cả sản phẩm từ API
+        async function fetchAllProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/cars');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                allProducts = await response.json();
+            } catch (error) {
+                console.error('Lỗi khi tải dữ liệu:', error);
+            }
+        }
+
         // Hàm xử lý tìm kiếm
         async function handleSearch(event) {
             event.preventDefault();
             
             const searchTerm = document.querySelector('input[name="search"]').value;
             const category = document.querySelector('select[name="category"]').value;
-            const price = document.querySelector('select[name="price"]').value;
+            const priceRange = document.querySelector('select[name="price"]').value;
 
-            // Tạo URL với các tham số tìm kiếm
-            let url = 'http://localhost:3000/api/cars/search?';
-            const params = new URLSearchParams();
+            // Lọc sản phẩm theo điều kiện
+            let filteredProducts = allProducts;
 
+            // Lọc theo tên
             if (searchTerm) {
-                params.append('name', searchTerm);
+                filteredProducts = filteredProducts.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+                );
             }
+
+            // Lọc theo danh mục
             if (category) {
-                params.append('category', category);
-            }
-            if (price) {
-                const [min, max] = price.split('-');
-                if (min) params.append('minPrice', min * 1000000);
-                if (max && max !== '+') params.append('maxPrice', max * 1000000);
+                filteredProducts = filteredProducts.filter(product => 
+                    product.category === category
+                );
             }
 
-            try {
-                // Chuyển hướng đến trang sản phẩm với các tham số tìm kiếm
-                window.location.href = `sanpham.html?${params.toString()}`;
-            } catch (error) {
-                console.error('Lỗi khi tìm kiếm:', error);
-                alert('Có lỗi xảy ra khi tìm kiếm. Vui lòng thử lại sau.');
+            // Lọc theo giá
+            if (priceRange) {
+                const [min, max] = priceRange.split('-');
+                filteredProducts = filteredProducts.filter(product => {
+                    if (max === '+') {
+                        return product.price >= min * 1000000;
+                    } else {
+                        return product.price >= min * 1000000 && product.price <= max * 1000000;
+                    }
+                });
             }
+
+            // Lưu kết quả tìm kiếm vào localStorage
+            localStorage.setItem('searchResults', JSON.stringify(filteredProducts));
+            localStorage.setItem('searchFilters', JSON.stringify({
+                searchTerm,
+                category,
+                priceRange
+            }));
+
+            // Chuyển hướng đến trang kết quả tìm kiếm
+            window.location.href = 'ketqua-timkiem.html';
         }
 
-        // Gắn sự kiện submit cho form tìm kiếm
-        document.querySelector('form').addEventListener('submit', handleSearch);
-
-        // Hàm format giá tiền
-        function formatPrice(price) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(price);
-        }
-
-        // Kiểm tra và điền giá trị tìm kiếm từ URL (nếu có)
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
+        // Thêm sự kiện khi trang được load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await fetchAllProducts();
             
-            // Điền các giá trị tìm kiếm vào form
-            if (urlParams.has('search')) {
-                document.querySelector('input[name="search"]').value = urlParams.get('search');
-            }
-            if (urlParams.has('category')) {
-                document.querySelector('select[name="category"]').value = urlParams.get('category');
-            }
-            if (urlParams.has('price')) {
-                document.querySelector('select[name="price"]').value = urlParams.get('price');
-            }
+            // Gắn sự kiện submit cho form tìm kiếm
+            const searchForm = document.querySelector('form');
+            searchForm.addEventListener('submit', handleSearch);
+
+            // Thêm tính năng gợi ý khi gõ
+            const searchInput = document.querySelector('input[name="search"]');
+            const suggestionsContainer = document.createElement('div');
+            suggestionsContainer.className = 'absolute w-full bg-white mt-1 rounded-md shadow-lg z-50 hidden';
+            searchInput.parentNode.appendChild(suggestionsContainer);
+
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    const query = e.target.value.toLowerCase();
+                    if (query.length < 2) {
+                        suggestionsContainer.classList.add('hidden');
+                        return;
+                    }
+
+                    const suggestions = allProducts
+                        .filter(product => 
+                            product.name.toLowerCase().includes(query) ||
+                            product.description.toLowerCase().includes(query)
+                        )
+                        .slice(0, 5); // Giới hạn 5 gợi ý
+
+                    if (suggestions.length > 0) {
+                        suggestionsContainer.innerHTML = suggestions.map(product => `
+                            <div class="p-3 hover:bg-gray-100 cursor-pointer border-b last:border-b-0"
+                                 onclick="selectSuggestion('${product.name}')">
+                                <div class="flex items-center space-x-3">
+                                    <img src="${product.image}" alt="${product.name}" 
+                                         class="w-12 h-12 object-cover rounded">
+                                    <div>
+                                        <div class="font-medium">${product.name}</div>
+                                        <div class="text-sm text-gray-600">${product.categoryName}</div>
+                                        <div class="text-honda-red">
+                                            ${new Intl.NumberFormat('vi-VN', {
+                                                style: 'currency',
+                                                currency: 'VND'
+                                            }).format(product.price)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        suggestionsContainer.classList.remove('hidden');
+                    } else {
+                        suggestionsContainer.innerHTML = `
+                            <div class="p-3 text-gray-500 text-center">
+                                Không tìm thấy kết quả
+                            </div>
+                        `;
+                        suggestionsContainer.classList.remove('hidden');
+                    }
+                }, 300);
+            });
+
+            // Ẩn gợi ý khi click ra ngoài
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+                    suggestionsContainer.classList.add('hidden');
+                }
+            });
         });
+
+        // Hàm chọn gợi ý
+        function selectSuggestion(name) {
+            document.querySelector('input[name="search"]').value = name;
+            document.querySelector('.suggestions').classList.add('hidden');
+        }
     </script>
     <!-- Nút đóng quảng cáo -->
     <button class="absolute top-2 right-2 bg-white/80 p-1 rounded-full hover:bg-white">
@@ -324,5 +385,87 @@
     <div class="max-w-7xl mx-auto 2xl:mx-[180px]">
         <!-- Nội dung trang -->
     </div>
+
+    <!-- Thêm script này trước thẻ đóng body -->
+    <script>
+        // Hàm lấy sản phẩm nổi bật từ API
+        async function getFeaturedProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/cars?featured=true');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const products = await response.json();
+                displayFeaturedProducts(products);
+            } catch (error) {
+                console.error('Lỗi khi tải sản phẩm nổi bật:', error);
+                document.getElementById('featured-products').innerHTML = `
+                    <div class="col-span-3 text-center text-red-600">
+                        Không thể tải dữ liệu sản phẩm nổi bật. Vui lòng thử lại sau.
+                    </div>
+                `;
+            }
+        }
+
+        // Hàm hiển thị sản phẩm nổi bật
+        function displayFeaturedProducts(products) {
+            const container = document.getElementById('featured-products');
+            container.innerHTML = products.map(product => `
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <div class="relative">
+                        <a href="chitiet.html?id=${product.id}">
+                            <img src="${product.image}" 
+                                 alt="${product.name}" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 right-0 bg-honda-red text-white px-6 py-2 rounded-l-full font-bold shadow-lg">
+                                ${getCategoryLabel(product.category)}
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 hover:text-honda-red transition-colors">
+                            ${product.name}
+                        </h3>
+                        <p class="text-gray-600 mb-4">${product.description}</p>
+                        <div class="text-honda-red font-bold mb-4 text-2xl">
+                            ${formatPrice(product.price)}
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <a href="chitiet.html?id=${product.id}" 
+                               class="bg-gray-800 text-white px-4 py-3 rounded-lg hover:bg-gray-700 transition-colors text-center font-semibold">
+                                Xem chi tiết
+                            </a>
+                            <button class="bg-honda-red text-white px-4 py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">
+                                Đặt lịch lái thử
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Hàm format nhãn danh mục
+        function getCategoryLabel(category) {
+            const labels = {
+                'sedan': 'SEDAN',
+                'suv': 'SUV',
+                '7cho': '7 CHỖ',
+                'thethao': 'THỂ THAO'
+            };
+            return labels[category] || category.toUpperCase();
+        }
+
+        // Hàm format giá
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+
+        // Gọi hàm khi trang web được load
+        document.addEventListener('DOMContentLoaded', getFeaturedProducts);
+    </script>
 </body>
 </html>

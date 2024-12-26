@@ -264,11 +264,11 @@
       "colors": ["Xanh Pearl", "Đỏ Valencia", "Trắng Casino"]
     },
     {
-      "id": "civic-type-r",
-      "name": "Honda Civic Type R",
+      "id": "13",
+      "name": "abc",
       "description": "Sedan thể thao hiệu suất cao",
       "price": 2399000000,
-      "image": "/img/honda-civic-type-r.jpg",
+      "image": "/img/honda-hrv-hybrid.jpg",
       "category": "sport",
       "features": [
         "Động cơ 2.0L VTEC TURBO",

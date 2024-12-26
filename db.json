@@ -3,29 +3,65 @@
     {
       "id": "1",
       "name": "Honda City RS",
-      "category": "sedan",
+      "category": "sedan", 
       "categoryName": "Sedan",
       "description": "Sedan hạng B thể thao, tiết kiệm nhiên liệu",
       "price": 599000000,
       "image": "/img/honda-city.webp",
       "specs": {
-        "engine": "1.5L DOHC i-VTEC",
-        "power": "119 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L DOHC i-VTEC",
+        "congSuat": "119 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.553 x 1.748 x 1.467 mm",
+        "chieuDaiCoSo": "2.600 mm",
+        "khoangSangGam": "134 mm",
+        "dungTichNhienLieu": "40L",
+        "tieuThuNhienLieu": "5.6L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.5,
+        "comfort": 4.3,
+        "performance": 4.6,
+        "reliability": 4.7,
+        "fuelEconomy": 4.8,
+        "value": 4.4
       }
     },
     {
-      "id": "2",
+      "id": "2", 
       "name": "Honda City G",
       "category": "sedan",
-      "categoryName": "Sedan",
+      "categoryName": "Sedan", 
       "description": "Sedan hạng B tiêu chuẩn",
       "price": 529000000,
       "image": "/img/honda-city-G.webp",
       "specs": {
-        "engine": "1.5L DOHC i-VTEC",
-        "power": "119 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L DOHC i-VTEC",
+        "congSuat": "119 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.553 x 1.748 x 1.467 mm",
+        "chieuDaiCoSo": "2.600 mm", 
+        "khoangSangGam": "134 mm",
+        "dungTichNhienLieu": "40L",
+        "tieuThuNhienLieu": "5.7L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.3,
+        "comfort": 4.2,
+        "performance": 4.3,
+        "reliability": 4.5,
+        "fuelEconomy": 4.6,
+        "value": 4.4
       }
     },
     {
@@ -37,9 +73,27 @@
       "price": 870000000,
       "image": "/img/Honda civic-RS.jpg",
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "176 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "176 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.678 x 1.802 x 1.415 mm",
+        "chieuDaiCoSo": "2.735 mm",
+        "khoangSangGam": "134 mm",
+        "dungTichNhienLieu": "47L",
+        "tieuThuNhienLieu": "6.5L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode, Sport Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "240 Nm tại 1.700-4.500 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.7,
+        "comfort": 4.6,
+        "performance": 4.8,
+        "reliability": 4.7,
+        "fuelEconomy": 4.5,
+        "value": 4.6
       }
     },
     {
@@ -51,9 +105,27 @@
       "price": 730000000,
       "image": "/img/honda-city-G.webp",
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "176 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "176 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.678 x 1.802 x 1.415 mm",
+        "chieuDaiCoSo": "2.735 mm",
+        "khoangSangGam": "134 mm",
+        "dungTichNhienLieu": "47L",
+        "tieuThuNhienLieu": "6.6L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "240 Nm tại 1.700-4.500 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.5,
+        "comfort": 4.4,
+        "performance": 4.6,
+        "reliability": 4.6,
+        "fuelEconomy": 4.4,
+        "value": 4.5
       }
     },
     {
@@ -63,11 +135,29 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng D sang trọng và đẳng cấp",
       "price": 1319000000,
-      "image": "/img/honda-accord.jpg",
+      "image": "/img/honda-accord.jpg", 
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "188 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "188 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.901 x 1.862 x 1.450 mm",
+        "chieuDaiCoSo": "2.830 mm",
+        "khoangSangGam": "131 mm",
+        "dungTichNhienLieu": "56L",
+        "tieuThuNhienLieu": "7.1L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode, Sport Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "260 Nm tại 1.600-5.000 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.8,
+        "comfort": 4.9,
+        "performance": 4.7,
+        "reliability": 4.8,
+        "fuelEconomy": 4.6,
+        "value": 4.7
       }
     },
     {
@@ -79,9 +169,27 @@
       "price": 1118000000,
       "image": "/img/Honda_CR-v7cho.jpg",
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "188 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "188 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.623 x 1.855 x 1.679 mm",
+        "chieuDaiCoSo": "2.660 mm",
+        "khoangSangGam": "198 mm",
+        "dungTichNhienLieu": "57L",
+        "tieuThuNhienLieu": "7.3L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode, AWD System",
+        "heTruyen": "Dẫn động 4 bánh",
+        "moMenXoan": "240 Nm tại 2.000-5.000 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.7,
+        "comfort": 4.8,
+        "performance": 4.6,
+        "reliability": 4.7,
+        "fuelEconomy": 4.5,
+        "value": 4.6
       }
     },
     {
@@ -93,9 +201,27 @@
       "price": 998000000,
       "image": "/img/crv.jpg",
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "188 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "188 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.623 x 1.855 x 1.679 mm",
+        "chieuDaiCoSo": "2.660 mm",
+        "khoangSangGam": "198 mm",
+        "dungTichNhienLieu": "57L",
+        "tieuThuNhienLieu": "7.4L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "240 Nm tại 2.000-5.000 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.6,
+        "comfort": 4.7,
+        "performance": 4.5,
+        "reliability": 4.6,
+        "fuelEconomy": 4.4,
+        "value": 4.5
       }
     },
     {
@@ -107,9 +233,27 @@
       "price": 871000000,
       "image": "/img/honda-hrv.avif",
       "specs": {
-        "engine": "1.5L VTEC TURBO",
-        "power": "174 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L VTEC TURBO",
+        "congSuat": "174 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.385 x 1.790 x 1.590 mm",
+        "chieuDaiCoSo": "2.610 mm",
+        "khoangSangGam": "196 mm",
+        "dungTichNhienLieu": "40L",
+        "tieuThuNhienLieu": "6.7L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode, Sport Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "240 Nm tại 1.700-4.500 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.5,
+        "comfort": 4.4,
+        "performance": 4.6,
+        "reliability": 4.5,
+        "fuelEconomy": 4.4,
+        "value": 4.4
       }
     },
     {
@@ -121,9 +265,27 @@
       "price": 699000000,
       "image": "/img/hrv.jpg",
       "specs": {
-        "engine": "1.5L DOHC i-VTEC",
-        "power": "119 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L DOHC i-VTEC",
+        "congSuat": "119 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.385 x 1.790 x 1.590 mm",
+        "chieuDaiCoSo": "2.610 mm",
+        "khoangSangGam": "196 mm",
+        "dungTichNhienLieu": "40L",
+        "tieuThuNhienLieu": "6.5L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.3,
+        "comfort": 4.2,
+        "performance": 4.3,
+        "reliability": 4.4,
+        "fuelEconomy": 4.5,
+        "value": 4.4
       }
     },
     {
@@ -135,9 +297,27 @@
       "price": 705000000,
       "image": "/img/Honda_BR-V.jpg",
       "specs": {
-        "engine": "1.5L DOHC i-VTEC",
-        "power": "119 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L DOHC i-VTEC",
+        "congSuat": "119 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.490 x 1.780 x 1.685 mm",
+        "chieuDaiCoSo": "2.695 mm",
+        "khoangSangGam": "201 mm",
+        "dungTichNhienLieu": "42L",
+        "tieuThuNhienLieu": "6.2L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.4,
+        "comfort": 4.3,
+        "performance": 4.2,
+        "reliability": 4.5,
+        "fuelEconomy": 4.6,
+        "value": 4.5
       }
     },
     {
@@ -149,9 +329,27 @@
       "price": 661000000,
       "image": "/img/brv.jpg",
       "specs": {
-        "engine": "1.5L DOHC i-VTEC",
-        "power": "119 mã lực",
-        "transmission": "CVT"
+        "dongCo": "1.5L DOHC i-VTEC",
+        "congSuat": "119 mã lực",
+        "hopSo": "CVT",
+        "kichThuoc": "4.490 x 1.780 x 1.685 mm",
+        "chieuDaiCoSo": "2.695 mm",
+        "khoangSangGam": "201 mm",
+        "dungTichNhienLieu": "42L",
+        "tieuThuNhienLieu": "6.3L/100km",
+        "loaiNhienLieu": "Xăng",
+        "congNghePhamVi": "ECON Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
+        "tieuChuanKhiThai": "Euro 5"
+      },
+      "rating": {
+        "overall": 4.2,
+        "comfort": 4.1,
+        "performance": 4.0,
+        "reliability": 4.4,
+        "fuelEconomy": 4.5,
+        "value": 4.4
       }
     },
     {
@@ -163,9 +361,27 @@
       "price": 2399000000,
       "image": "/img/Civic-Type-R-lead.avif",
       "specs": {
-        "engine": "2.0L VTEC TURBO",
-        "power": "315 mã lực",
-        "transmission": "6MT"
+        "dongCo": "2.0L VTEC TURBO",
+        "congSuat": "315 mã lực",
+        "hopSo": "6MT",
+        "kichThuoc": "4.594 x 1.890 x 1.401 mm",
+        "chieuDaiCoSo": "2.735 mm",
+        "khoangSangGam": "128 mm",
+        "dungTichNhienLieu": "47L",
+        "tieuThuNhienLieu": "8.2L/100km",
+        "loaiNhienLieu": "Xăng RON 95",
+        "congNghePhamVi": "Sport Mode, +R Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "420 Nm tại 2.600-4.000 vòng/phút",
+        "tieuChuanKhiThai": "Euro 6"
+      },
+      "rating": {
+        "overall": 4.9,
+        "comfort": 4.5,
+        "performance": 5.0,
+        "reliability": 4.7,
+        "fuelEconomy": 4.0,
+        "value": 4.6
       }
     },
     {
@@ -177,10 +393,28 @@
       "price": 2399000000,
       "image": "/img/typer.jpg",
       "specs": {
-        "engine": "2.0L VTEC TURBO",
-        "power": "315 mã lực",
-        "transmission": "6MT"
+        "dongCo": "2.0L VTEC TURBO",
+        "congSuat": "315 mã lực",
+        "hopSo": "6MT",
+        "kichThuoc": "4.594 x 1.890 x 1.401 mm",
+        "chieuDaiCoSo": "2.735 mm",
+        "khoangSangGam": "128 mm",
+        "dungTichNhienLieu": "47L",
+        "tieuThuNhienLieu": "8.3L/100km",
+        "loaiNhienLieu": "Xăng RON 95",
+        "congNghePhamVi": "Sport Mode, +R Mode",
+        "heTruyen": "Dẫn động cầu trước",
+        "moMenXoan": "420 Nm tại 2.600-4.000 vòng/phút",
+        "tieuChuanKhiThai": "Euro 6"
+      },
+      "rating": {
+        "overall": 4.8,
+        "comfort": 4.4,
+        "performance": 4.9,
+        "reliability": 4.6,
+        "fuelEconomy": 4.0,
+        "value": 4.5
       }
     }
   ]
-} 
+}

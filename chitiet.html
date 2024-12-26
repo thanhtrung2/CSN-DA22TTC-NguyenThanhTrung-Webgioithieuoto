@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+<!-- Phần khai báo cơ bản của trang web -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm - Honda Việt Nam</title>
+    <!-- Import thư viện Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cấu hình màu sắc tùy chỉnh cho Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -17,12 +20,15 @@
         }
     </script>
 </head>
+
 <body class="font-sans m-0 p-0">
+    <!-- Phần header chứa tên công ty và slogan -->
     <header class="bg-honda-red text-white p-5 text-center">
         <h2 class="text-4xl font-bold tracking-wider uppercase mb-2">Thành Trung Honda</h2>
         <p class="text-lg italic tracking-wide">Chất lượng từ Nhật Bản</p>
     </header>
 
+    <!-- Thanh điều hướng chính -->
     <nav class="bg-gray-800 p-4 text-center">
         <a href="index.html" class="text-white no-underline mx-4 hover:text-gray-300">Trang chủ</a>
         <a href="sanpham.html" class="text-white no-underline mx-4 hover:text-gray-300">Sản phẩm</a>
@@ -30,19 +36,23 @@
         <a href="lienhe.html" class="text-white no-underline mx-4 hover:text-gray-300">Liên hệ</a>
     </nav>
 
+    <!-- Phần nội dung chính -->
     <main class="max-w-7xl mx-auto p-5">
         <div id="product-detail" class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- Chi tiết sản phẩm sẽ được thêm vào đây bằng JavaScript -->
         </div>
     </main>
 
+    <!-- Phần footer chứa thông tin liên hệ -->
     <footer class="bg-gray-800 text-white text-center p-5 mt-8">
         <p>© 2024 Thành Trung Honda. Tất cả quyền được bảo lưu.</p>
         <p>Địa chỉ: Phường 6 Nguyễn Chí Khanh, Thành Phố Trà Vinh, Trà Vinh</p>
         <p>Hotline: 0392647923</p>
     </footer>
 
+    <!-- Phần JavaScript xử lý logic -->
     <script>
+        // Hàm định dạng giá tiền theo tiền tệ Việt Nam
         function formatPrice(price) {
             return new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
@@ -50,16 +60,19 @@
             }).format(price);
         }
 
+        // Hàm lấy và hiển thị chi tiết sản phẩm
         async function getProductDetail() {
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
 
+            // Kiểm tra ID sản phẩm
             if (!productId) {
                 window.location.href = 'sanpham.html';
                 return;
             }
 
             try {
+                // Gọi API lấy dữ liệu sản phẩm
                 const response = await fetch(`http://localhost:3000/cars`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -67,6 +80,7 @@
                 const cars = await response.json();
                 const product = cars.find(car => car.id === productId);
 
+                // Hiển thị thông báo nếu không tìm thấy sản phẩm
                 if (!product) {
                     document.getElementById('product-detail').innerHTML = `
                         <div class="col-span-2 text-center text-red-600">
@@ -76,9 +90,12 @@
                     return;
                 }
 
+                // Cập nhật tiêu đề trang
                 document.title = `${product.name} - Honda Việt Nam`;
                 
+                // Hiển thị chi tiết sản phẩm
                 document.getElementById('product-detail').innerHTML = `
+                    <!-- Phần hiển thị hình ảnh sản phẩm -->
                     <div class="space-y-4">
                         <img src="${product.image}" alt="${product.name}" 
                              class="w-full rounded-lg shadow-lg">
@@ -91,6 +108,7 @@
                         </div>
                     </div>
 
+                    <!-- Phần thông tin chi tiết sản phẩm -->
                     <div class="space-y-6">
                         <div>
                             <h1 class="text-3xl font-bold text-gray-800">${product.name}</h1>
@@ -101,24 +119,158 @@
                             ${formatPrice(product.price)}
                         </div>
 
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <h2 class="text-xl font-semibold mb-4">Thông số kỹ thuật</h2>
-                            <div class="space-y-3">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Động cơ:</span>
-                                    <span class="font-medium">${product.specs.engine}</span>
+                        <!-- Phần thông số kỹ thuật -->
+                        <div class="bg-gray-100 p-6 rounded-lg" id="specifications">
+                            <h2 class="text-xl font-semibold mb-4">Thông số kỹ thuật chi tiết</h2>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <!-- Thông số động cơ -->
+                                    <div class="space-y-3">
+                                        <h3 class="font-semibold text-honda-red">Động cơ & Vận hành</h3>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Động cơ:</span>
+                                            <span class="font-medium">${product.specs.dongCo}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Công suất:</span>
+                                            <span class="font-medium">${product.specs.congSuat}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Mô-men xoắn:</span>
+                                            <span class="font-medium">${product.specs.moMenXoan}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Hộp số:</span>
+                                            <span class="font-medium">${product.specs.hopSo}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Thông số kích thước -->
+                                    <div class="space-y-3">
+                                        <h3 class="font-semibold text-honda-red">Kích thước & Thông số khác</h3>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Kích thước:</span>
+                                            <span class="font-medium">${product.specs.kichThuoc}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Chiều dài cơ sở:</span>
+                                            <span class="font-medium">${product.specs.chieuDaiCoSo}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Khoảng sáng gầm:</span>
+                                            <span class="font-medium">${product.specs.khoangSangGam}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Công suất:</span>
-                                    <span class="font-medium">${product.specs.power}</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Hộp số:</span>
-                                    <span class="font-medium">${product.specs.transmission}</span>
+
+                                <!-- Thông số tiêu thụ nhiên liệu và công nghệ -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                                    <div class="space-y-3">
+                                        <h3 class="font-semibold text-honda-red">Tiêu thụ nhiên liệu</h3>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Mức tiêu thụ:</span>
+                                            <span class="font-medium">${product.specs.tieuThuNhienLieu}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Dung tích nhiên liệu:</span>
+                                            <span class="font-medium">${product.specs.dungTichNhienLieu}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Loại nhiên liệu:</span>
+                                            <span class="font-medium">${product.specs.loaiNhienLieu}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <h3 class="font-semibold text-honda-red">Công nghệ & Hệ thống</h3>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Công nghệ:</span>
+                                            <span class="font-medium">${product.specs.congNghePhamVi}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Hệ truyền động:</span>
+                                            <span class="font-medium">${product.specs.heTruyen}</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-gray-600">Tiêu chuẩn khí thải:</span>
+                                            <span class="font-medium">${product.specs.tieuChuanKhiThai}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Phần đánh giá sản phẩm -->
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h2 class="text-xl font-semibold mb-4">Đánh giá sản phẩm</h2>
+                            
+                            <div class="flex items-center mb-6">
+                                <div class="flex items-center">
+                                    <span class="text-3xl font-bold mr-2">${product.rating.overall}</span>
+                                    <div class="flex text-yellow-400">
+                                        ${Array(Math.floor(product.rating.overall)).fill('★').join('')}
+                                        ${product.rating.overall % 1 >= 0.5 ? '★' : ''}
+                                        ${Array(5 - Math.ceil(product.rating.overall)).fill('☆').join('')}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Chi tiết đánh giá -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span>Độ thoải mái:</span>
+                                        <span class="text-yellow-400">${'★'.repeat(Math.round(product.rating.comfort))}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Hiệu suất:</span>
+                                        <span class="text-yellow-400">${'★'.repeat(Math.round(product.rating.performance))}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Độ tin cậy:</span>
+                                        <span class="text-yellow-400">${'★'.repeat(Math.round(product.rating.reliability))}</span>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between">
+                                        <span>Tiết kiệm nhiên liệu:</span>
+                                        <span class="text-yellow-400">${'★'.repeat(Math.round(product.rating.fuelEconomy))}</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Giá trị:</span>
+                                        <span class="text-yellow-400">${'★'.repeat(Math.round(product.rating.value))}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Form đánh giá sản phẩm -->
+                            <form id="reviewForm" class="mt-6">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Đánh giá của bạn</label>
+                                    <div class="flex space-x-2 text-2xl text-gray-400" id="ratingStars">
+                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Nhận xét của bạn</label>
+                                    <textarea 
+                                        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-honda-red"
+                                        rows="4"
+                                        placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm..."
+                                    ></textarea>
+                                </div>
+                                <button type="submit" 
+                                        class="bg-honda-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                                    Gửi đánh giá
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Các nút hành động -->
                         <div class="space-y-4">
                             <button class="w-full bg-honda-red text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
                                 Đặt lịch lái thử
@@ -139,7 +291,81 @@
             }
         }
 
+        // Khởi tạo trang khi tải xong
         document.addEventListener('DOMContentLoaded', getProductDetail);
+
+        // Xử lý đánh giá sao
+        const ratingStars = document.querySelectorAll('#ratingStars span');
+        let selectedRating = 0;
+
+        ratingStars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                selectedRating = index + 1;
+                ratingStars.forEach((s, i) => {
+                    s.classList.toggle('text-yellow-400', i < selectedRating);
+                });
+            });
+
+            star.addEventListener('mouseover', () => {
+                ratingStars.forEach((s, i) => {
+                    s.classList.toggle('text-yellow-400', i <= index);
+                });
+            });
+
+            star.addEventListener('mouseout', () => {
+                ratingStars.forEach((s, i) => {
+                    s.classList.toggle('text-yellow-400', i < selectedRating);
+                });
+            });
+        });
+
+        // Xử lý gửi đánh giá
+        document.getElementById('reviewForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const comment = e.target.querySelector('textarea').value;
+            if (!selectedRating || !comment) {
+                alert('Vui lòng chọn số sao và nhập nhận xét');
+                return;
+            }
+
+            const newReview = {
+                rating: selectedRating,
+                comment: comment,
+                date: new Date().toLocaleDateString('vi-VN')
+            };
+
+            try {
+                const response = await fetch(`http://localhost:3000/cars/${product.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        reviews: [...(product.reviews || []), newReview]
+                    })
+                });
+
+                if (!response.ok) throw new Error('Không thể gửi đánh giá');
+
+                location.reload();
+            } catch (error) {
+                alert('Có lỗi xảy ra khi gửi đánh giá');
+                console.error(error);
+            }
+        });
+
+        // Xử lý cuộn trang đến phần thông số kỹ thuật
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.location.hash === '#specifications') {
+                const specsElement = document.getElementById('specifications');
+                if (specsElement) {
+                    specsElement.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
