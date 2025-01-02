@@ -256,38 +256,7 @@
         "value": 4.4
       }
     },
-    {
-      "id": "9",
-      "name": "Honda HR-V G",
-      "category": "suv",
-      "categoryName": "SUV",
-      "description": "SUV đô thị tiêu chuẩn",
-      "price": 699000000,
-      "image": "/img/hrv.jpg",
-      "specs": {
-        "dongCo": "1.5L DOHC i-VTEC",
-        "congSuat": "119 mã lực",
-        "hopSo": "CVT",
-        "kichThuoc": "4.385 x 1.790 x 1.590 mm",
-        "chieuDaiCoSo": "2.610 mm",
-        "khoangSangGam": "196 mm",
-        "dungTichNhienLieu": "40L",
-        "tieuThuNhienLieu": "6.5L/100km",
-        "loaiNhienLieu": "Xăng",
-        "congNghePhamVi": "ECON Mode",
-        "heTruyen": "Dẫn động cầu trước",
-        "moMenXoan": "145 Nm tại 4.300 vòng/phút",
-        "tieuChuanKhiThai": "Euro 5"
-      },
-      "rating": {
-        "overall": 4.3,
-        "comfort": 4.2,
-        "performance": 4.3,
-        "reliability": 4.4,
-        "fuelEconomy": 4.5,
-        "value": 4.4
-      }
-    },
+    
     {
       "id": "10",
       "name": "Honda BR-V L",

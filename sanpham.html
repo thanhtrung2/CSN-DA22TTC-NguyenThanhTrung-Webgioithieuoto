@@ -115,9 +115,9 @@
     </main>
 
     <footer class="bg-gray-800 text-white text-center p-5 mt-8">
-        <p>© 2024 Thành Trung Honda. Tất cả quyền được bảo lưu.</p>
-        <p>Địa chỉ: Phường 6 Nguyễn Chí Khanh, Thành Phố Trà Vinh, Trà Vinh</p>
-        <p>Hotline: 0392647923</p>
+        <p>110122195</p>
+        <p>DA22TTC</p>
+        <p>Nguyễn Thành Trung</p>
     </footer>
 
     <script>
@@ -131,6 +131,18 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const products = await response.json();
+                
+                // Lấy thông số kỹ thuật cho từng xe
+                for (let product of products) {
+                    const specsResponse = await fetch(`http://localhost:3000/specifications/${product.id}`);
+                    if (specsResponse.ok) {
+                        const specs = await specsResponse.json();
+                        product.fullSpecs = specs;
+                    } else {
+                        product.fullSpecs = null; // Hoặc một giá trị mặc định khác
+                        console.error(`Failed to fetch specs for product ID: ${product.id}, status: ${specsResponse.status}`);
+                    }
+                }
                 
                 // Nhóm sản phẩm theo danh mục
                 const groupedProducts = products.reduce((acc, product) => {
@@ -205,29 +217,6 @@
                                             ${formatPrice(product.price)}
                                         </div>
                                         
-                                        <!-- Thông số kỹ thuật cơ bản -->
-                                        <div class="mb-4 p-4 bg-gray-50 rounded-lg">
-                                            <h4 class="font-semibold mb-2">Thông số cơ bản:</h4>
-                                            <ul class="space-y-2 text-sm">
-                                                <li class="flex justify-between">
-                                                    <span class="text-gray-600">Động cơ:</span>
-                                                    <span class="font-medium">${product.specs.engine}</span>
-                                                </li>
-                                                <li class="flex justify-between">
-                                                    <span class="text-gray-600">Công suất:</span>
-                                                    <span class="font-medium">${product.specs.power}</span>
-                                                </li>
-                                                <li class="flex justify-between">
-                                                    <span class="text-gray-600">Hộp số:</span>
-                                                    <span class="font-medium">${product.specs.transmission}</span>
-                                                </li>
-                                            </ul>
-                                            <!-- Nút xem thêm thông số -->
-                                            <a href="chitiet.html?id=${product.id}#specifications" 
-                                               class="block text-center mt-3 text-honda-red hover:text-red-700 text-sm font-medium">
-                                                Xem thêm thông số kỹ thuật →
-                                            </a>
-                                        </div>
 
                                         <div class="grid grid-cols-2 gap-3">
                                             <a href="chitiet.html?id=${product.id}" 
@@ -408,6 +397,18 @@
                 }
                 allProducts = await response.json();
                 
+                // Lấy thông số kỹ thuật cho từng xe
+                for (let product of allProducts) {
+                    const specsResponse = await fetch(`http://localhost:3000/specifications/${product.id}`);
+                     if (specsResponse.ok) {
+                        const specs = await specsResponse.json();
+                        product.fullSpecs = specs;
+                    } else {
+                        product.fullSpecs = null; // Hoặc một giá trị mặc định khác
+                        console.error(`Failed to fetch specs for product ID: ${product.id}, status: ${specsResponse.status}`);
+                    }
+                }
+                
                 // Nhóm sản phẩm theo danh mục và hiển thị
                 const groupedProducts = allProducts.reduce((acc, product) => {
                     const category = product.category;
@@ -446,4 +447,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
