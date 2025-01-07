@@ -97,38 +97,6 @@
       }
     },
     {
-      "id": "4",
-      "name": "Honda Civic G",
-      "category": "sedan",
-      "categoryName": "Sedan",
-      "description": "Sedan hạng C tiêu chuẩn",
-      "price": 730000000,
-      "image": "/img/honda-city-G.webp",
-      "specs": {
-        "dongCo": "1.5L VTEC TURBO",
-        "congSuat": "176 mã lực",
-        "hopSo": "CVT",
-        "kichThuoc": "4.678 x 1.802 x 1.415 mm",
-        "chieuDaiCoSo": "2.735 mm",
-        "khoangSangGam": "134 mm",
-        "dungTichNhienLieu": "47L",
-        "tieuThuNhienLieu": "6.6L/100km",
-        "loaiNhienLieu": "Xăng",
-        "congNghePhamVi": "ECON Mode",
-        "heTruyen": "Dẫn động cầu trước",
-        "moMenXoan": "240 Nm tại 1.700-4.500 vòng/phút",
-        "tieuChuanKhiThai": "Euro 5"
-      },
-      "rating": {
-        "overall": 4.5,
-        "comfort": 4.4,
-        "performance": 4.6,
-        "reliability": 4.6,
-        "fuelEconomy": 4.4,
-        "value": 4.5
-      }
-    },
-    {
       "id": "5",
       "name": "Honda Accord 1.5 Turbo",
       "category": "sedan",
