@@ -3,11 +3,11 @@
     {
       "id": "1",
       "name": "Honda City RS",
-      "category": "sedan", 
+      "category": "sedan",
       "categoryName": "Sedan",
       "description": "Sedan hạng B thể thao, tiết kiệm nhiên liệu",
       "price": 599000000,
-      "image": "/img/honda-city.webp",
+      "image": "img/honda-city.webp",
       "specs": {
         "dongCo": "1.5L DOHC i-VTEC",
         "congSuat": "119 mã lực",
@@ -33,19 +33,19 @@
       }
     },
     {
-      "id": "2", 
+      "id": "2",
       "name": "Honda City G",
       "category": "sedan",
-      "categoryName": "Sedan", 
+      "categoryName": "Sedan",
       "description": "Sedan hạng B tiêu chuẩn",
       "price": 529000000,
-      "image": "/img/honda-city-G.webp",
+      "image": "img/honda-city-G.webp",
       "specs": {
         "dongCo": "1.5L DOHC i-VTEC",
         "congSuat": "119 mã lực",
         "hopSo": "CVT",
         "kichThuoc": "4.553 x 1.748 x 1.467 mm",
-        "chieuDaiCoSo": "2.600 mm", 
+        "chieuDaiCoSo": "2.600 mm",
         "khoangSangGam": "134 mm",
         "dungTichNhienLieu": "40L",
         "tieuThuNhienLieu": "5.7L/100km",
@@ -71,7 +71,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng C thể thao đẳng cấp",
       "price": 870000000,
-      "image": "/img/Honda civic-RS.jpg",
+      "image": "img/Honda civic-RS.jpg",
       "specs": {
         "dongCo": "1.5L VTEC TURBO",
         "congSuat": "176 mã lực",
@@ -103,7 +103,7 @@
       "categoryName": "Sedan",
       "description": "Sedan hạng D sang trọng và đẳng cấp",
       "price": 1319000000,
-      "image": "/img/honda-accord.jpg", 
+      "image": "img/honda-accord.jpg",
       "specs": {
         "dongCo": "1.5L VTEC TURBO",
         "congSuat": "188 mã lực",
@@ -135,7 +135,7 @@
       "categoryName": "SUV",
       "description": "SUV cao cấp nhất, 7 chỗ",
       "price": 1118000000,
-      "image": "/img/Honda_CR-v7cho.jpg",
+      "image": "img/Honda_CR-v7cho.jpg",
       "specs": {
         "dongCo": "1.5L VTEC TURBO",
         "congSuat": "188 mã lực",
@@ -167,7 +167,7 @@
       "categoryName": "SUV",
       "description": "SUV 5 chỗ đa dụng",
       "price": 998000000,
-      "image": "/img/crv.jpg",
+      "image": "img/Honda-CR-V-Hybrid.avif",
       "specs": {
         "dongCo": "1.5L VTEC TURBO",
         "congSuat": "188 mã lực",
@@ -199,7 +199,7 @@
       "categoryName": "SUV",
       "description": "SUV đô thị thể thao",
       "price": 871000000,
-      "image": "/img/honda-hrv.avif",
+      "image": "img/honda-hrv.avif",
       "specs": {
         "dongCo": "1.5L VTEC TURBO",
         "congSuat": "174 mã lực",
@@ -232,7 +232,7 @@
       "categoryName": "7 Chỗ",
       "description": "SUV 7 chỗ cao cấp",
       "price": 705000000,
-      "image": "/img/Honda_BR-V.jpg",
+      "image": "img/Honda_BR-V.jpg",
       "specs": {
         "dongCo": "1.5L DOHC i-VTEC",
         "congSuat": "119 mã lực",
@@ -264,7 +264,7 @@
       "categoryName": "7 Chỗ",
       "description": "SUV 7 chỗ tiêu chuẩn",
       "price": 661000000,
-      "image": "/img/brv.jpg",
+      "image": "img/HONDA-BRV-G.webp",
       "specs": {
         "dongCo": "1.5L DOHC i-VTEC",
         "congSuat": "119 mã lực",
@@ -296,7 +296,7 @@
       "categoryName": "Thể Thao",
       "description": "Xe thể thao hiệu suất cao",
       "price": 2399000000,
-      "image": "/img/Civic-Type-R-lead.avif",
+      "image": "img/Civic-Type-R-lead.avif",
       "specs": {
         "dongCo": "2.0L VTEC TURBO",
         "congSuat": "315 mã lực",
@@ -328,7 +328,7 @@
       "categoryName": "Thể Thao",
       "description": "Phiên bản thể thao của Civic",
       "price": 2399000000,
-      "image": "/img/typer.jpg",
+      "image": "img/honda_type-s.jpg",
       "specs": {
         "dongCo": "2.0L VTEC TURBO",
         "congSuat": "315 mã lực",

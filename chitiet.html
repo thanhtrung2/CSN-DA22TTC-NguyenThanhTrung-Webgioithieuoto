@@ -248,11 +248,11 @@
                                 <div class="mb-4">
                                     <label class="block text-gray-700 mb-2">Đánh giá của bạn</label>
                                     <div class="flex space-x-2 text-2xl text-gray-400" id="ratingStars">
-                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
-                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
-                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
-                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
-                                        <span class="cursor-pointer hover:text-yellow-400">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400" data-rating="1">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400" data-rating="2">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400" data-rating="3">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400" data-rating="4">★</span>
+                                        <span class="cursor-pointer hover:text-yellow-400" data-rating="5">★</span>
                                     </div>
                                 </div>
                                 <div class="mb-4">
@@ -263,6 +263,7 @@
                                         placeholder="Chia sẻ trải nghiệm của bạn về sản phẩm..."
                                     ></textarea>
                                 </div>
+                                
                                 <button type="submit" 
                                         class="bg-honda-red text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
                                     Gửi đánh giá
@@ -272,12 +273,12 @@
 
                         <!-- Các nút hành động -->
                         <div class="space-y-4">
-                            <button class="w-full bg-honda-red text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors">
+                            <a href="lienhe.html" class="w-full bg-honda-red text-white px-6 py-3 rounded-lg hover:bg-red-700 transition-colors text-center block">
                                 Đặt lịch lái thử
-                            </button>
-                            <button class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
+                            </a>
+                            <a href="lienhe.html" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors text-center block">
                                 Liên hệ tư vấn
-                            </button>
+                            </a>
                         </div>
                     </div>
                 `;
@@ -298,17 +299,18 @@
         const ratingStars = document.querySelectorAll('#ratingStars span');
         let selectedRating = 0;
 
-        ratingStars.forEach((star, index) => {
-            star.addEventListener('click', () => {
-                selectedRating = index + 1;
+        ratingStars.forEach((star) => {
+            star.addEventListener('click', function() {
+                selectedRating = parseInt(this.getAttribute('data-rating'));
                 ratingStars.forEach((s, i) => {
                     s.classList.toggle('text-yellow-400', i < selectedRating);
                 });
             });
 
-            star.addEventListener('mouseover', () => {
+            star.addEventListener('mouseover', function() {
+                const rating = parseInt(this.getAttribute('data-rating'));
                 ratingStars.forEach((s, i) => {
-                    s.classList.toggle('text-yellow-400', i <= index);
+                    s.classList.toggle('text-yellow-400', i < rating);
                 });
             });
 
@@ -323,6 +325,7 @@
         document.getElementById('reviewForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const comment = e.target.querySelector('textarea').value;
+            
             if (!selectedRating || !comment) {
                 alert('Vui lòng chọn số sao và nhập nhận xét');
                 return;
@@ -347,7 +350,48 @@
 
                 if (!response.ok) throw new Error('Không thể gửi đánh giá');
 
-                location.reload();
+                // Update the review section without reloading
+                const productDetailDiv = document.getElementById('product-detail');
+                const currentHTML = productDetailDiv.innerHTML;
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = currentHTML;
+
+                const reviewSection = tempDiv.querySelector('.bg-white.rounded-lg.shadow-lg.p-6');
+                if (reviewSection) {
+                    // Update the overall rating
+                    const overallRatingSpan = reviewSection.querySelector('.flex.items-center.mb-6 .text-3xl.font-bold.mr-2');
+                    const starContainer = reviewSection.querySelector('.flex.items-center.mb-6 .flex.text-yellow-400');
+                    
+                    const updatedProduct = await (await fetch(`http://localhost:3000/cars/${product.id}`)).json();
+                    const newOverallRating = updatedProduct.rating.overall;
+                    if(overallRatingSpan) overallRatingSpan.textContent = newOverallRating;
+                    if(starContainer){
+                        starContainer.innerHTML = `${Array(Math.floor(newOverallRating)).fill('★').join('')}
+                        ${newOverallRating % 1 >= 0.5 ? '★' : ''}
+                        ${Array(5 - Math.ceil(newOverallRating)).fill('☆').join('')}`;
+                    }
+
+                    // Update individual ratings
+                    const comfortRating = reviewSection.querySelector('.space-y-2 div:nth-child(1) .text-yellow-400');
+                    const performanceRating = reviewSection.querySelector('.space-y-2 div:nth-child(2) .text-yellow-400');
+                    const reliabilityRating = reviewSection.querySelector('.space-y-2 div:nth-child(3) .text-yellow-400');
+                    const fuelEconomyRating = reviewSection.querySelector('.space-y-2:nth-child(2) div:nth-child(1) .text-yellow-400');
+                    const valueRating = reviewSection.querySelector('.space-y-2:nth-child(2) div:nth-child(2) .text-yellow-400');
+
+                    if(comfortRating) comfortRating.textContent = '★'.repeat(Math.round(updatedProduct.rating.comfort));
+                    if(performanceRating) performanceRating.textContent = '★'.repeat(Math.round(updatedProduct.rating.performance));
+                    if(reliabilityRating) reliabilityRating.textContent = '★'.repeat(Math.round(updatedProduct.rating.reliability));
+                    if(fuelEconomyRating) fuelEconomyRating.textContent = '★'.repeat(Math.round(updatedProduct.rating.fuelEconomy));
+                    if(valueRating) valueRating.textContent = '★'.repeat(Math.round(updatedProduct.rating.value));
+                    
+                    productDetailDiv.innerHTML = tempDiv.innerHTML;
+                }
+                
+                // Reset the form
+                e.target.reset();
+                selectedRating = 0;
+                ratingStars.forEach(star => star.classList.remove('text-yellow-400'));
+
             } catch (error) {
                 alert('Có lỗi xảy ra khi gửi đánh giá');
                 console.error(error);
