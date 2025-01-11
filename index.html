@@ -249,13 +249,18 @@
             }
 
             // Lọc theo giá
+            // Đoạn code này lọc sản phẩm dựa trên khoảng giá được chọn từ dropdown.
             if (priceRange) {
+                // priceRange có dạng "min-max" hoặc "min-+"
                 const [min, max] = priceRange.split('-');
+                // Lọc các sản phẩm dựa trên giá
                 filteredProducts = filteredProducts.filter(product => {
+                    // Nếu max là "+", nghĩa là giá lớn hơn hoặc bằng min
                     if (max === '+') {
-                        return product.price >= min * 1000000;
+                        return product.price >= min * 1000000; // Chuyển đổi giá trị min sang VNĐ
                     } else {
-                        return product.price >= min * 1000000 && product.price <= max * 1000000;
+                        // Nếu max là một số, nghĩa là giá nằm trong khoảng từ min đến max
+                        return product.price >= min * 1000000 && product.price <= max * 1000000; // Chuyển đổi giá trị min và max sang VNĐ
                     }
                 });
             }
